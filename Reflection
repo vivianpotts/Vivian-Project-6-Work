@@ -1,0 +1,328 @@
+# Finding the Longest Common Subsequence
+
+## Vivian Potts
+
+## Re-type the sentence "I adhered to the Allegheny College Honor Code while completing this project."
+
+I adhered to the Allegheny College Honor Code while completing this project.
+
+**IMPORTANT:** If you do not type the required sentence then the course
+instructor will not know that you adhered to the Allegheny College Honor Code
+while completing the project.
+
+## References
+
+1. Class Slides
+2. Class Book
+3. Copilot
+4. Geeksforgeeks
+5. Starter Repo
+
+## Program Output
+
+### Report at least two examples of program output from when you ran the `systemsense` program
+
+#### First output from running the `systemsense` program
+
+```python
+Displaying System Information
+
+╭─────────────────────────────────────────────────────────── System Information ───────────────────────────────────────────────────────────╮
+│ ╭──────────────────┬────────────────────────────────────────────────────────────────────────────────────╮                                │
+│ │ System Parameter │ Parameter Value                                                                    │                                │
+│ ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────┤                                │
+│ │ battery          │ 31.00% battery life remaining, 2:06:00 seconds remaining                           │                                │
+│ │ cpu              │ arm64                                                                              │                                │
+│ │ cpucores         │ 8 cores                                                                            │                                │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                 │                                │
+│ │ datetime         │ 2025-05-11 23:22:10.054264                                                         │                                │
+│ │ disk             │ Using 15.12 GB of 228.27 GB                                                        │                                │
+│ │ hostname         │ Vivians-MacBook-Pro.local                                                          │                                │
+│ │ memory           │ Using 15.12 GB of 228.27 GB                                                        │                                │
+│ │ platform         │ macOS-15.0-arm64-arm-64bit                                                         │                                │
+│ │ pythonversion    │ 3.12.7                                                                             │                                │
+│ │ runningprocesses │ 426 running processes                                                              │                                │
+│ │ swap             │ Using 2.64 GB of 4.00 GB                                                           │                                │
+│ │ system           │ OS: Darwin 24.0.0, Machine: arm64, Processor: arm                                  │                                │
+│ │ systemload       │ Average Load: 2.73828125, CPU Utilization: 18.90%                                  │                                │
+│ │ virtualenv       │ /Users/vivianpotts/Library/Caches/pypoetry/virtualenvs/systemsense-PJyuSaFu-py3.12 │                                │
+│ ╰──────────────────┴────────────────────────────────────────────────────────────────────────────────────╯                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Displaying Benchmark Results
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────── Benchmark Results ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭────────────────┬─────────────────────────────────────────────────────────────────╮                                                                                                                              │
+│ │ Benchmark Name │ Benchmark Results (sec)                                         │                                                                                                                              │
+│ ├────────────────┼─────────────────────────────────────────────────────────────────┤                                                                                                                              │
+│ │ addition       │ [0.4343328329268843, 0.4006212910171598, 0.4002819580491632]    │                                                                                                                              │
+│ │ concatenation  │ [1.7744318330660462, 2.349638040876016, 2.1192831669468433]     │                                                                                                                              │
+│ │ exponentiation │ [3.576836499851197, 3.5898762920405716, 3.843954083044082]      │                                                                                                                              │
+│ │ multiplication │ [0.5740604160819203, 0.5753640411421657, 0.5767730420920998]    │                                                                                                                              │
+│ │ rangelist      │ [0.16501370910555124, 0.16236762492917478, 0.16099800006486475] │                                                                                                                              │
+│ ╰────────────────┴─────────────────────────────────────────────────────────────────╯                                                                                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+#### Second output from running the `systemsense` program
+
+```python
+Displaying System Information
+
+╭─────────────────────────────────────────────────────────────────────────────────────────────── System Information ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭──────────────────┬────────────────────────────────────────────────────────────────────────────────────╮                                                                                                         │
+│ │ System Parameter │ Parameter Value                                                                    │                                                                                                         │
+│ ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────┤                                                                                                         │
+│ │ battery          │ 31.00% battery life remaining, 2:00:00 seconds remaining                           │                                                                                                         │
+│ │ cpu              │ arm64                                                                              │                                                                                                         │
+│ │ cpucores         │ 8 cores                                                                            │                                                                                                         │
+│ │ cpufrequencies   │ Min: Unknown Mhz, Max: Unknown Mhz                                                 │                                                                                                         │
+│ │ datetime         │ 2025-05-11 23:23:13.879466                                                         │                                                                                                         │
+│ │ disk             │ Using 15.12 GB of 228.27 GB                                                        │                                                                                                         │
+│ │ hostname         │ Vivians-MacBook-Pro.local                                                          │                                                                                                         │
+│ │ memory           │ Using 15.12 GB of 228.27 GB                                                        │                                                                                                         │
+│ │ platform         │ macOS-15.0-arm64-arm-64bit                                                         │                                                                                                         │
+│ │ pythonversion    │ 3.12.7                                                                             │                                                                                                         │
+│ │ runningprocesses │ 423 running processes                                                              │                                                                                                         │
+│ │ swap             │ Using 2.64 GB of 4.00 GB                                                           │                                                                                                         │
+│ │ system           │ OS: Darwin 24.0.0, Machine: arm64, Processor: arm                                  │                                                                                                         │
+│ │ systemload       │ Average Load: 3.37841796875, CPU Utilization: 21.30%                               │                                                                                                         │
+│ │ virtualenv       │ /Users/vivianpotts/Library/Caches/pypoetry/virtualenvs/systemsense-PJyuSaFu-py3.12 │                                                                                                         │
+│ ╰──────────────────┴────────────────────────────────────────────────────────────────────────────────────╯                                                                                                         │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Displaying Benchmark Results
+
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── Benchmark Results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭────────────────┬─────────────────────────────────────────────────────────────────╮                                                                                                                                                                             │
+│ │ Benchmark Name │ Benchmark Results (sec)                                         │                                                                                                                                                                             │
+│ ├────────────────┼─────────────────────────────────────────────────────────────────┤                                                                                                                                                                             │
+│ │ addition       │ [0.4386393749155104, 0.40158987510949373, 0.40051212487742305]  │                                                                                                                                                                             │
+│ │ concatenation  │ [1.63787283282727, 1.6367847500368953, 1.6352080840151757]      │                                                                                                                                                                             │
+│ │ exponentiation │ [3.524149291915819, 3.602181833004579, 3.6508954581804574]      │                                                                                                                                                                             │
+│ │ multiplication │ [0.5680849580094218, 0.6146235000342131, 0.567534500034526]     │                                                                                                                                                                             │
+│ │ rangelist      │ [0.17277470813132823, 0.16924024978652596, 0.16616837494075298] │                                                                                                                                                                             │
+│ ╰────────────────┴─────────────────────────────────────────────────────────────────╯                                                                                                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### Use three fenced code blocks to provide output from all different runs of `lcsfinder` for the three algorithms
+
+- dynamic
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_dynamic
+Data stored in list: ints
+Benchmarking strategy: double
+Number of runs: 5
+
+Generating data with size=1, data_type=DataType.INTS
+Processed data_type: ints
+Run 1 of 5 for lcs_dynamic algorithm using size  1 took 0.0000032920 seconds
+Generating data with size=2, data_type=DataType.INTS
+Processed data_type: ints
+Run 2 of 5 for lcs_dynamic algorithm using size  2 took 0.0000049169 seconds
+Generating data with size=4, data_type=DataType.INTS
+Processed data_type: ints
+Run 3 of 5 for lcs_dynamic algorithm using size  4 took 0.0000062920 seconds
+Generating data with size=8, data_type=DataType.INTS
+Processed data_type: ints
+Run 4 of 5 for lcs_dynamic algorithm using size  8 took 0.0000153340 seconds
+Generating data with size=16, data_type=DataType.INTS
+Processed data_type: ints
+Run 5 of 5 for lcs_dynamic algorithm using size 16 took 0.0000513340 seconds
+
+Minimum execution time:  0.0000032920 seconds for run 1 with size 1
+Maximum execution time:  0.0000513340 seconds for run 5 with size 16
+
+Average execution time:  0.0000162338 seconds across runs 1 through 5
+```
+
+- recursive
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_recursive
+Data stored in list: ints
+Benchmarking strategy: double
+Number of runs: 5
+
+Generating data with size=1, data_type=DataType.INTS
+Processed data_type: ints
+Run 1 of 5 for lcs_recursive algorithm using size  1 took 0.0000019581 seconds
+Generating data with size=2, data_type=DataType.INTS
+Processed data_type: ints
+Run 2 of 5 for lcs_recursive algorithm using size  2 took 0.0000034580 seconds
+Generating data with size=4, data_type=DataType.INTS
+Processed data_type: ints
+Run 3 of 5 for lcs_recursive algorithm using size  4 took 0.0000209999 seconds
+Generating data with size=8, data_type=DataType.INTS
+Processed data_type: ints
+Run 4 of 5 for lcs_recursive algorithm using size  8 took 0.0017486252 seconds
+Generating data with size=16, data_type=DataType.INTS
+Processed data_type: ints
+Run 5 of 5 for lcs_recursive algorithm using size 16 took 11.4135064159 seconds
+
+Minimum execution time:  0.0000019581 seconds for run 1 with size 1
+Maximum execution time:  11.4135064159 seconds for run 5 with size 16
+
+Average execution time:  2.2830562914 seconds across runs 1 through 5
+```
+
+- calculate
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_calculate
+Data stored in list: ints
+Benchmarking strategy: double
+Number of runs: 5
+
+Generating data with size=1, data_type=DataType.INTS
+Processed data_type: ints
+Run 1 of 5 for lcs_calculate algorithm using size  1 took 0.0000029171 seconds
+Generating data with size=2, data_type=DataType.INTS
+Processed data_type: ints
+Run 2 of 5 for lcs_calculate algorithm using size  2 took 0.0000042911 seconds
+Generating data with size=4, data_type=DataType.INTS
+Processed data_type: ints
+Run 3 of 5 for lcs_calculate algorithm using size  4 took 0.0000049998 seconds
+Generating data with size=8, data_type=DataType.INTS
+Processed data_type: ints
+Run 4 of 5 for lcs_calculate algorithm using size  8 took 0.0000129170 seconds
+Generating data with size=16, data_type=DataType.INTS
+Processed data_type: ints
+Run 5 of 5 for lcs_calculate algorithm using size 16 took 0.0000446250 seconds
+
+Minimum execution time:  0.0000029171 seconds for run 1 with size 1
+Maximum execution time:  0.0000446250 seconds for run 5 with size 16
+
+Average execution time:  0.0000139500 seconds across runs 1 through 5
+```
+
+#### Provide the command the output for the runs of the `lcsfinder` and the first algorithm
+
+- `poetry run lcsfinder --algorithmtype dynamic --startsize 1 --runs 5 --datatype ints --strategy double`
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_dynamic
+Data stored in list: ints
+Benchmarking strategy: double
+Number of runs: 5
+
+Generating data with size=1, data_type=DataType.INTS
+Processed data_type: ints
+Run 1 of 5 for lcs_dynamic algorithm using size  1 took 0.0000035418 seconds
+Generating data with size=2, data_type=DataType.INTS
+Processed data_type: ints
+Run 2 of 5 for lcs_dynamic algorithm using size  2 took 0.0000047919 seconds
+Generating data with size=4, data_type=DataType.INTS
+Processed data_type: ints
+Run 3 of 5 for lcs_dynamic algorithm using size  4 took 0.0000064170 seconds
+Generating data with size=8, data_type=DataType.INTS
+Processed data_type: ints
+Run 4 of 5 for lcs_dynamic algorithm using size  8 took 0.0000147498 seconds
+Generating data with size=16, data_type=DataType.INTS
+Processed data_type: ints
+Run 5 of 5 for lcs_dynamic algorithm using size 16 took 0.0000502910 seconds
+
+Minimum execution time:  0.0000035418 seconds for run 1 with size 1
+Maximum execution time:  0.0000502910 seconds for run 5 with size 16
+
+Average execution time:  0.0000159583 seconds across runs 1 through 5
+```
+
+#### Provide the command output for the runs of the `lcsfinder` and the second algorithm
+
+- `poetry run lcsfinder --algorithmtype recursive --startsize 2 --runs 2 --datatype chars --strategy double`
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_recursive
+Data stored in list: chars
+Benchmarking strategy: double
+Number of runs: 2
+
+Generating data with size=2, data_type=DataType.CHARS
+Processed data_type: chars
+Run 1 of 2 for lcs_recursive algorithm using size  2 took 0.0000060000 seconds
+Generating data with size=4, data_type=DataType.CHARS
+Processed data_type: chars
+Run 2 of 2 for lcs_recursive algorithm using size  4 took 0.0000367910 seconds
+
+Minimum execution time:  0.0000060000 seconds for run 1 with size 2
+Maximum execution time:  0.0000367910 seconds for run 2 with size 4
+
+Average execution time:  0.0000213955 seconds across runs 1 through 2
+```
+
+#### Provide the command output for the runs of the `lcsfinder` and the third algorithm
+
+- `poetry run lcsfinder --algorithmtype calculate --startsize 3 --runs 3 --datatype ints --strategy magnitude`
+
+```python
+Benchmarking Tool for Finding the LCS
+
+Type of list: lcs_calculate
+Data stored in list: ints
+Benchmarking strategy: magnitude
+Number of runs: 3
+
+Generating data with size=3, data_type=DataType.INTS
+Processed data_type: ints
+Run 1 of 3 for lcs_calculate algorithm using size  3 took 0.0000087910 seconds
+Generating data with size=13, data_type=DataType.INTS
+Processed data_type: ints
+Run 2 of 3 for lcs_calculate algorithm using size 13 took 0.0000864998 seconds
+Generating data with size=23, data_type=DataType.INTS
+Processed data_type: ints
+Run 3 of 3 for lcs_calculate algorithm using size 23 took 0.0002250830 seconds
+
+Minimum execution time:  0.0000087910 seconds for run 1 with size 3
+Maximum execution time:  0.0002250830 seconds for run 3 with size 12
+
+Average execution time:  0.0001067913 seconds across runs 1 through 3
+```
+
+## Data Tables
+
+| Algorithm Type   | Data Type | Strategy   | Start Size | Runs | Minimum Time (s) | Maximum Time (s) | Average Time (s) |
+|------------------|-----------|------------|------------|------|------------------|------------------|------------------|
+| lcs_dynamic      | ints      | double     | 1          | 5    | 0.0000032920     | 0.0000513340     | 0.0000162338     |
+| lcs_recursive    | ints      | double     | 1          | 5    | 0.0000019581     | 11.4135064159    | 2.2830562914     |
+| lcs_calculate    | ints      | double     | 1          | 5    | 0.0000029171     | 0.0000446250     | 0.0000139500     |
+
+This table shows the performance of each algorithm under the specified configurations, highlighting the differences in execution times.
+
+## Performance Analysis
+
+1. Dynamic Algorithm: This algorithm performed well with small input sizes, showing consistent and low execution times! As the input size increased, the execution time also increased but at a manageable rate it is efficient for larger inputs compared to the other algorithms!
+
+2. Recursive Algorithm: The recursive approach showed a significant increase in execution time as the input size grew, which makes it impractical for larger inputs. The use of recursion also increases the risk of stack overflow for very large inputs.
+
+3. Calculate Algorithm: This algorithm demonstrated consistent performance with low execution times. Its time complexity is similar to the dynamic approach  but it may have slightly higher overhead due to additional calculations.
+
+The use of `ints` versus `chars` did not significantly affect the performance- the results mainly were effected by size of input!!
+
+## Professional Development
+
+### Overall, what are the trade-offs associated with using a different algorithmic approaches to finding the longest common subsequence?
+
+Different algorithms for finding the LCS have trade-offs in terms of time complexity, memory usage, and ease of implementation!! The dynamic approach is efficient and scalable but requires wayy more memory. The recursive approach is simple to implement but becomes impractical for large inputs due to its exponential time complexity and so with more inputs you're wasting alot of time!! The calculate approach balances efficiency and simplicity but may have slightly higher overhead!!
+
+### What is challenging about designing an experiment to evaluate the performance of LCS finding?
+
+Designing an experiment for LCS finding is challenging because it requires careful control of input sizes, data types, and algorithm configurations to ensure meaningful comparisons. LCS has many different variables to call and making sure that the data is consistent across runs is difficult!
+
+### Take Home Points
+
+The experiment highlights the importance of choosing the right algorithm for the problem size and constraints. While recursive methods are simple, they are not suitable for large inputs. Dynamic programming provides a good balance of efficiency and scalability. Proper benchmarking and analysis are essential to understand algorithm performance in real-world scenarios. Especially when all the different algoritms have their tradeoffs- in this experiment I've learned none of these algoritms are perfect and you have to be practical about which one you choose!!
